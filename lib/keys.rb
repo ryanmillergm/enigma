@@ -1,4 +1,4 @@
-class Keys
+class KeyGenerator
   attr_reader :random_number,
               :keys
 

@@ -5,14 +5,14 @@ require './lib/enigma'
 require './lib/keys'
 require 'pry'
 
-class KeysTest < MiniTest::Test
+class KeyGeneratorTest < MiniTest::Test
 
   def setup
-    @keysets = Keys.new
+    @keysets = KeyGenerator.new
   end
 
   def test_keysets_exists
-    assert_instance_of Keys, @keysets
+    assert_instance_of KeyGenerator, @keysets
   end
 
   def test_keysets_generate_five_digit_number
