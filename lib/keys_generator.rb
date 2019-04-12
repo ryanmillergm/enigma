@@ -4,7 +4,7 @@ class KeyGenerator
 
   def initialize
     @random_number = nil
-    @keys = nil
+    @keys = {}
   end
 
   def random_number_generator
@@ -12,11 +12,10 @@ class KeyGenerator
   end
 
   def set_key_values
-    @keys = {}
-    keys["key_a"] = @random_number[0..1].to_i
-    keys["key_b"] = @random_number[1..2].to_i
-    keys["key_c"] = @random_number[2..3].to_i
-    keys["key_d"] = @random_number[3..4].to_i
+    keys["A_key"] = @random_number[0..1].to_i
+    keys["B_key"] = @random_number[1..2].to_i
+    keys["C_key"] = @random_number[2..3].to_i
+    keys["D_key"] = @random_number[3..4].to_i
     @keys
   end
 

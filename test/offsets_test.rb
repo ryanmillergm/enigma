@@ -25,4 +25,10 @@ class OffsetsTest < MiniTest::Test
     expected = @offsets.date_convert.to_i ** 2
     assert_equal expected, @offsets.date_converted_squared
   end
+
+  def test_offset_key_created
+    assert_equal 4, @offsets.offset_keys_generator.count
+  end
+
+
 end
