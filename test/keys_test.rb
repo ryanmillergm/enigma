@@ -19,5 +19,10 @@ class KeysTest < MiniTest::Test
     assert_equal 5, @keys.random_number_generator.length
   end
 
+  def test_there_are_four_key_values
+    @keys.random_number_generator
+    assert_equal 4, @keys.set_key_values.count
+  end
+
 
 end
