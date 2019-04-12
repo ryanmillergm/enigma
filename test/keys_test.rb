@@ -8,20 +8,20 @@ require 'pry'
 class KeysTest < MiniTest::Test
 
   def setup
-    @keys = Keys.new
+    @keysets = Keys.new
   end
 
-  def test_keys_exists
-    assert_instance_of Keys, @keys
+  def test_keysets_exists
+    assert_instance_of Keys, @keysets
   end
 
-  def test_keys_generate_five_digit_number
-    assert_equal 5, @keys.random_number_generator.length
+  def test_keysets_generate_five_digit_number
+    assert_equal 5, @keysets.random_number_generator.length
   end
 
   def test_there_are_four_key_values
-    @keys.random_number_generator
-    assert_equal 4, @keys.set_key_values.count
+    @keysets.random_number_generator
+    assert_equal 4, @keysets.set_key_values.count
   end
 
 

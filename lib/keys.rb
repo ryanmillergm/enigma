@@ -1,21 +1,23 @@
 class Keys
+  attr_reader :random_number,
+              :keys
 
   def initialize
-    @key = nil
+    @random_number = nil
+    @keys = nil
   end
 
   def random_number_generator
-    @key = rand(99999).to_s.rjust(5, "0")
+    @random_number = rand(99999).to_s.rjust(5, "0")
   end
 
   def set_key_values
-    keys = {}
-    keys["key_a"] = @key[0..1].to_i
-    keys["key_b"] = @key[1..2].to_i
-    keys["key_c"] = @key[2..3].to_i
-    keys["key_d"] = @key[3..4].to_i
-    keys
-    # binding.pry
+    @keys = {}
+    keys["key_a"] = @random_number[0..1].to_i
+    keys["key_b"] = @random_number[1..2].to_i
+    keys["key_c"] = @random_number[2..3].to_i
+    keys["key_d"] = @random_number[3..4].to_i
+    @keys
   end
 
 end
