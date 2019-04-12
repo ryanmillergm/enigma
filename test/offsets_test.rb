@@ -21,4 +21,8 @@ class OffsetsTest < MiniTest::Test
     assert_equal 6, @offsets.date_convert.length
   end
 
+  def test_date_converted_squared
+    expected = @offsets.date_convert.to_i ** 2
+    assert_equal expected, @offsets.date_converted_squared
+  end
 end
