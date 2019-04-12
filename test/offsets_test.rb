@@ -17,4 +17,8 @@ class OffsetsTest < MiniTest::Test
     assert_instance_of Offsets, @offsets
   end
 
+  def test_offsets_converts_date_to_DDMMYY
+    assert_equal 6, @offsets.date_convert.length
+  end
+
 end
