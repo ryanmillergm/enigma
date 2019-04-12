@@ -18,5 +18,4 @@ class KeyGenerator
     keys["D_key"] = @random_number[3..4].to_i
     @keys
   end
-
 end
