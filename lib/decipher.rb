@@ -1,0 +1,2 @@
+class Decipher
+end
