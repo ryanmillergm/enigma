@@ -46,9 +46,14 @@ class CipherTest < MiniTest::Test
     assert_equal 4, @cipher.shift.count
   end
 
+  def test_string_into_array
+    refute_empty @shift, @cipher.string_into_array
+  end
+
   def test_cipher_encrypts_string
     skip
     expected = "string"
     refute expected, @cipher.encrypt
   end
+
 end
