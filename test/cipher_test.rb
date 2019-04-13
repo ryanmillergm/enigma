@@ -17,6 +17,7 @@ class CipherTest < MiniTest::Test
     @offsets.offset_keys_generator
     @cipher.add_keysets(@keysets)
     @cipher.add_offsets(@offsets)
+    @cipher.set_shift
   end
 
   def test_cipher_exists
@@ -28,14 +29,25 @@ class CipherTest < MiniTest::Test
   end
 
   def test_add_keysets
-    assert_equal [@keysets], @cipher.keysets_obj
+    expected = {
+      "keyset" => @keysets
+    }
+    assert_equal expected, @cipher.keysets_obj
   end
 
   def test_add_offsets
-    assert_equal [@offsets], @cipher.offsets_obj
+    expected = {
+      "offset" => @offsets
+    }
+    assert_equal expected, @cipher.offsets_obj
+  end
+
+  def test_cipher_sets_shift
+    assert_equal 4, @cipher.shift.count
   end
 
   def test_cipher_encrypts_string
+    skip
     expected = "string"
     refute expected, @cipher.encrypt
   end
