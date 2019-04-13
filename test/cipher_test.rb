@@ -10,10 +10,14 @@ require 'pry'
 class CipherTest < MiniTest::Test
 
   def setup
-    @cipher = Cipher.new
+    @cipher = Cipher.new("string")
   end
 
   def test_cipher_exists
-    assert_instance_of Cipher, @cipher    
+    assert_instance_of Cipher, @cipher
+  end
+
+  def test_cipher_takes_string
+    assert_equal "string", @cipher.string
   end
 end
