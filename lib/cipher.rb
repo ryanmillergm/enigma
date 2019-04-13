@@ -43,7 +43,6 @@ class Cipher
       count += 1
       unless letter.ord.between?("a".ord, "z".ord)
         @result << letter
-        next
       end
     letter_code = ((((letter.ord - "a".ord) + @shift[count % 4]) % 26) + "a".ord)
     @result << letter_code.chr
