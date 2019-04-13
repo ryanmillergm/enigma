@@ -35,8 +35,8 @@ class CipherTest < MiniTest::Test
     assert_equal [@offsets], @cipher.offsets_obj
   end
 
-  # def test_cipher_encrypts_string
-  #   expected = "string"
-  #   refute expected, @cipher.encrypt
-  # end
+  def test_cipher_encrypts_string
+    expected = "string"
+    refute expected, @cipher.encrypt
+  end
 end
