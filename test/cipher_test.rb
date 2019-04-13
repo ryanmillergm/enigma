@@ -10,7 +10,7 @@ require 'pry'
 class CipherTest < MiniTest::Test
 
   def setup
-    @cipher = Cipher.new("string")
+    @cipher = Cipher.new("string that contains special info!")
     @offsets = Offsets.new
     @keysets = KeyGenerator.new
     @keysets.set_key_values
@@ -18,6 +18,7 @@ class CipherTest < MiniTest::Test
     @cipher.add_keysets(@keysets)
     @cipher.add_offsets(@offsets)
     @cipher.set_shift
+    @cipher.string_into_array
   end
 
   def test_cipher_exists
@@ -25,7 +26,7 @@ class CipherTest < MiniTest::Test
   end
 
   def test_cipher_takes_string
-    assert_equal "string", @cipher.string
+    assert @cipher.string.is_a? String
   end
 
   def test_add_keysets
@@ -47,13 +48,11 @@ class CipherTest < MiniTest::Test
   end
 
   def test_string_into_array
-    refute_empty @shift, @cipher.string_into_array
+    assert_equal @cipher.string_arr, @cipher.string_into_array
   end
 
   def test_cipher_encrypts_string
-    skip
-    expected = "string"
-    refute expected, @cipher.encrypt
+    assert @cipher.encrypt != @cipher.string
   end
 
 end

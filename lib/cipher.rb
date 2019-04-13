@@ -3,7 +3,8 @@ class Cipher
               :keysets_obj,
               :offsets_obj,
               :shift,
-              :string_arr
+              :string_arr,
+              :result
 
   def initialize(string)
     @string = string
@@ -11,6 +12,7 @@ class Cipher
     @offsets_obj = {}
     @shift = []
     @string_arr = []
+    @result = ""
   end
 
   def add_keysets(keys)
@@ -32,30 +34,20 @@ class Cipher
 
   def string_into_array
     @string.each_char { |letter| @string_arr << letter }
+    @string_arr
   end
 
-  def encrypt(string)
-    binding.pry
+  def encrypt
+    count = 0
+    @string.each_char do |letter|
+      count += 1
+      unless letter.ord.between?("a".ord, "z".ord)
+        @result << letter
+        next
+      end
+    letter_code = ((((letter.ord - "a".ord) + @shift[count % 4]) % 26) + "a".ord)
+    @result << letter_code.chr
+    end
+    @result
   end
-
-
 end
-
-# def caeser_cipher(string, shift)
-#   result = ""
-#
-#   string.each_char do |letter|
-#     unless letter.ord.between?("a".ord, "z".ord)
-#       result << letter
-#       next
-#     end
-#
-#   letter_code = ((((letter.ord - "a".ord) + shift) % 26) + "a".ord)
-#
-#
-#   result << letter_code.chr
-#   end
-#   result
-# end
-#
-# puts caeser_cipher("this is crazy", 4)
