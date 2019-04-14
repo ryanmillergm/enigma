@@ -10,9 +10,9 @@ require 'pry'
 class CipherTest < MiniTest::Test
 
   def setup
-    @cipher = Cipher.new("string that contains special info!")
-    @offsets = Offsets.new
     @keysets = KeyGenerator.new
+    @offsets = Offsets.new
+    @cipher = Cipher.new("string that contains special info!")
     @keysets.set_key_values
     @offsets.offset_keys_generator
     @cipher.add_keysets(@keysets)
