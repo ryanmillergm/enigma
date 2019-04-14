@@ -12,7 +12,7 @@ class Enigma
   end
 
   def encrypt(message, key, date)
-    @encrypted_message[:encryption] = @cipher.encrypt(message)
+    @encrypted_message[:encryption] = @cipher.encrypt(message, key, date)
     @encrypted_message[:key] = @cipher.keysets.random_number
     @encrypted_message[:date] = @cipher.offsets.date
     @encrypted_message
@@ -23,7 +23,6 @@ class Enigma
     @deciphered_message[:key] = @cipher.keysets.random_number
     @deciphered_message[:date] = @cipher.offsets.date
     @deciphered_message
-
   end
 
 end

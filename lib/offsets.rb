@@ -18,7 +18,7 @@ class Offsets
     date_convert.to_i ** 2
   end
 
-  def offset_keys_generator
+  def offset_keys_generator(date = @date)
     @offset_keys["A_offset"] = date_converted_squared.to_s[-4].to_i
     @offset_keys["B_offset"] = date_converted_squared.to_s[-3].to_i
     @offset_keys["C_offset"] = date_converted_squared.to_s[-2].to_i

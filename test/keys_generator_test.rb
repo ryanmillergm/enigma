@@ -9,14 +9,20 @@ class KeyGeneratorTest < MiniTest::Test
 
   def setup
     @keysets = KeyGenerator.new
+    @keysets.random_number_generator
   end
 
   def test_keysets_exists
     assert_instance_of KeyGenerator, @keysets
   end
 
+  def test_keysets_generate_five_digit_number
+    assert_equal 5, @keysets.random_number_generator.length
+  end
+
   def test_there_are_four_key_values
     assert_equal 4, @keysets.set_key_values.count
+
   end
 
 
