@@ -1,20 +1,30 @@
 class Enigma
   attr_reader :cipher,
               :decipher,
-              :secret_message
+              :encrypted_message,
+              :deciphered_message
 
   def initialize(cipher, decipher)
     @cipher = cipher
     @decipher = decipher
-    @secret_message = {}
+    @encrypted_message = {}
   end
 
   def encrypt(message, key, date)
-    @secret_message[:encryption] = @cipher.encrypt(message)
-    @secret_message[:key] = key
-    @secret_message[:date] = date
-    @secret_message
+    @encrypted_message[:encryption] = @cipher.encrypt(message)
+    @encrypted_message[:key] = key
+    @encrypted_message[:date] = date
+    @encrypted_message
   end
 
+  def decrypt(ciphertext, key, date)
+    binding.pry
+    @cipher.encrypt(message)
+    @deciphered_message[:decryption] = @cipher.encrypt(message)
+    @deciphered_message[:key] = key
+    @deciphered_message[:date] = date
+    @deciphered_message
+
+  end
 
 end

@@ -27,12 +27,22 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_encrypt
+    skip
     expected = {
-      encryption: "vjqtbeaweqihssi",
+      encryption: "oxfsv qvyex lgx",
       key: "08304",
       date: "291018"
     }
     assert_equal expected, @enigma.encrypt("hello world end", "08304", "291018")
+  end
+
+  def test_enigma_decrypt
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+   assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 
 end

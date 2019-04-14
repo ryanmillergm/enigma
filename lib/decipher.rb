@@ -1,21 +1,21 @@
 class Decipher
-  attr_reader :code,
+  attr_reader :cipher,
               :deciphered_code,
               :shift
 
-  def initialize(code)
-    @code = code
+  def initialize(cipher)
+    @cipher = cipher
     @deciphered_code = ""
     @shift = nil
   end
 
-  def add_cipher_shift(cipher)
-    @shift = cipher.shift
+  def add_cipher_shift
+    @shift = @cipher.shift
   end
 
-  def decipher_code
+  def decipher_code(string)
     count = 0
-    @code.each_char do |letter|
+    string.each_char do |letter|
       count += 1
       unless letter.ord.between?("a".ord, "z".ord)
         @deciphered_code << letter
