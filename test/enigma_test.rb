@@ -17,9 +17,10 @@ class EnigmaTest < MiniTest::Test
     @keysets.set_key_values
     @offsets.offset_keys_generator
     @cipher.set_shift
-    @decipher = Decipher.new(@cipher.ciphered_code)
-    @decipher.add_cipher_shift(@cipher)
+    @decipher = Decipher.new(@cipher)
+    @decipher.add_cipher_shift
     @enigma = Enigma.new(@cipher, @decipher)
+    # @enigma.encrypt("hello world end", "08304", "291018")
   end
 
   def test_enigma_exists
@@ -27,7 +28,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_encrypt
-    skip
     expected = {
       encryption: "oxfsv qvyex lgx",
       key: "08304",
@@ -37,8 +37,10 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_decrypt
+    @enigma.encrypt("hello world end", "08304", "291018")
+    
     expected = {
-      decryption: "hello world",
+      decryption: "hello world end",
       key: "02715",
       date: "040895"
     }

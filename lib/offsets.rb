@@ -1,15 +1,17 @@
 class Offsets
-  attr_reader :offset_keys
+  attr_reader :offset_keys,
+              :date
 
   def initialize
     @offset_keys = {}
+    @date = nil
   end
 
   def date_convert
     day = Date.today.day.to_s.rjust(2, "0")
     month = Date.today.month.to_s.rjust(2, "0")
     year = Date.today.year.to_s.rjust(2, "0")[2, 3]
-    mmddyy = (day + month + year)
+    @date = (day + month + year)
   end
 
   def date_converted_squared
