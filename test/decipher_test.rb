@@ -13,7 +13,7 @@ class DecipherTest < MiniTest::Test
   def setup
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
-    @cipher = Cipher.new("string that contains special info!")
+    @cipher = Cipher.new(@keysets, @offsets)
     @keysets.set_key_values
     @offsets.offset_keys_generator
     @cipher.add_keysets(@keysets)
