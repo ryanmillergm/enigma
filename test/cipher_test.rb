@@ -12,47 +12,32 @@ class CipherTest < MiniTest::Test
   def setup
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
-    @cipher = Cipher.new("string that contains special info!")
+    @cipher = Cipher.new(@keysets, @offsets)
     @keysets.set_key_values
     @offsets.offset_keys_generator
-    @cipher.add_keysets(@keysets)
-    @cipher.add_offsets(@offsets)
     @cipher.set_shift
-    @cipher.string_into_array
   end
 
   def test_cipher_exists
     assert_instance_of Cipher, @cipher
   end
 
-  def test_cipher_takes_string
-    assert @cipher.string.is_a? String
-  end
-
-  def test_add_keysets
-    expected = {
-      "keyset" => @keysets
-    }
-    assert_equal expected, @cipher.keysets_obj
-  end
-
-  def test_add_offsets
-    expected = {
-      "offset" => @offsets
-    }
-    assert_equal expected, @cipher.offsets_obj
+  def test_cipher_has_keysets_and_offsets
+    assert_equal @keysets, @cipher.keysets
+    assert_equal @offsets, @cipher.offsets
   end
 
   def test_cipher_sets_shift
     assert_equal 4, @cipher.shift.count
   end
 
-  def test_string_into_array
-    assert_equal @cipher.string_arr, @cipher.string_into_array
+  def test_cipher_encrypts_string
+    assert @cipher.encrypt("This is a secret message") != "This is a secret message"
   end
 
   def test_cipher_encrypts_string
-    assert @cipher.encrypt != @cipher.string
+        binding.pry
+    assert_equal "string", @cipher.encrypt("This is a secret message from another a mom do")
   end
 
 end
