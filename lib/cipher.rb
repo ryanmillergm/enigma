@@ -4,7 +4,8 @@ class Cipher
               :offsets_obj,
               :shift,
               :string_arr,
-              :result
+              :result,
+              :ciphered_code
 
   def initialize(string)
     @string = string
@@ -12,7 +13,7 @@ class Cipher
     @offsets_obj = {}
     @shift = []
     @string_arr = []
-    @result = ""
+    @ciphered_code = ""
   end
 
   def add_keysets(keys)
@@ -42,11 +43,13 @@ class Cipher
     @string.each_char do |letter|
       count += 1
       unless letter.ord.between?("a".ord, "z".ord)
-        @result << letter
+        @ciphered_code << letter
+        next
       end
     letter_code = ((((letter.ord - "a".ord) + @shift[count % 4]) % 26) + "a".ord)
-    @result << letter_code.chr
+    @ciphered_code << letter_code.chr
     end
-    @result
+    @ciphered_code
   end
+
 end
