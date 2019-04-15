@@ -12,11 +12,10 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @keysets = KeyGenerator.new
-    @keysets.random_number_generator
     @offsets = Offsets.new
+    @offsets.date_convert
     @cipher = Cipher.new(@keysets, @offsets)
-    @decipher = Decipher.new(@cipher)
-    @decipher.add_cipher_shift
+    @decipher = Decipher.new(@keysets, @offsets)
     @enigma = Enigma.new(@cipher, @decipher)
     # @enigma.encrypt("hello world end", "08304", "291018")
   end
@@ -27,19 +26,17 @@ class EnigmaTest < MiniTest::Test
 
   def test_enigma_encrypt
     expected = {
-      encryption: "oxfsv qvyex lgx",
-      key: "08304",
-      date: "291018"
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
     }
-    assert_equal expected, @enigma.encrypt("hello world end", "08304", "291018")
+
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_enigma_decrypt
-    skip
-    @enigma.encrypt("hello world end", "08304", "291018")
-
     expected = {
-      decryption: "hello world end",
+      decryption: "hello world",
       key: "02715",
       date: "040895"
     }
