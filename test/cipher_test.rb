@@ -11,11 +11,13 @@ class CipherTest < MiniTest::Test
 
   def setup
     @keysets = KeyGenerator.new
+    @keysets.random_number_generator
     @offsets = Offsets.new
     @cipher = Cipher.new(@keysets, @offsets)
-    @keysets.set_key_values
-    @offsets.offset_keys_generator
-    @cipher.set_shift
+    # @keysets.set_key_values
+    # @offsets.offset_keys_generator
+    # @keysets.random_number_generator
+    # @cipher.set_shift
   end
 
   def test_cipher_exists
@@ -32,12 +34,24 @@ class CipherTest < MiniTest::Test
   end
 
   def test_cipher_encrypts_string
+    skip
     assert @cipher.encrypt("This is a secret message") != "This is a secret message"
   end
 
   def test_cipher_encrypts_string
-        binding.pry
-    assert_equal "string", @cipher.encrypt("This is a secret message from another a mom do")
+    skip
+    assert_equal "string", @cipher.encrypt("This is a secret message from another a mom do", "08304", "040895")
+  end
+
+  def test_cipher_takes_key_and_sets_value
+    skip
+    expected = {
+      "A_key"=>8,
+      "B_key"=>83,
+      "C_key"=>30,
+      "D_key"=>4
+    }
+    assert_equal expected, @cipher.make_keys("08304")
   end
 
 end

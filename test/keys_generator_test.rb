@@ -17,6 +17,7 @@ class KeyGeneratorTest < MiniTest::Test
 
   def test_there_are_four_key_values
     assert_equal 4, @keysets.set_key_values.count
+
   end
 
 

@@ -27,6 +27,7 @@ class OffsetsTest < MiniTest::Test
   end
 
   def test_offset_key_created
+    skip
     assert_equal 4, @offsets.offset_keys_generator.count
   end
 

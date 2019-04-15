@@ -13,13 +13,11 @@ class EnigmaTest < MiniTest::Test
   def setup
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
+    @offsets.date_convert
     @cipher = Cipher.new(@keysets, @offsets)
-    @keysets.set_key_values
-    @offsets.offset_keys_generator
-    @cipher.set_shift
-    @decipher = Decipher.new(@cipher.ciphered_code)
-    @decipher.add_cipher_shift(@cipher)
+    @decipher = Decipher.new(@keysets, @offsets)
     @enigma = Enigma.new(@cipher, @decipher)
+    # @enigma.encrypt("hello world end", "08304", "291018")
   end
 
   def test_enigma_exists
@@ -28,11 +26,21 @@ class EnigmaTest < MiniTest::Test
 
   def test_enigma_encrypt
     expected = {
-      encryption: "vjqtbeaweqihssi",
-      key: "08304",
-      date: "291018"
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
     }
-    assert_equal expected, @enigma.encrypt("hello world end", "08304", "291018")
+
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_enigma_decrypt
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+   assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 
 end
