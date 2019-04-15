@@ -20,8 +20,8 @@ class Enigma
 
   def decrypt(ciphertext, key, date)
     @deciphered_message[:decryption] = @decipher.decrypt(ciphertext, key, date)
-    @encrypted_message[:key] = @decipher.key
-    @encrypted_message[:date] = @decipher.date
+    @deciphered_message[:key] = @decipher.key
+    @deciphered_message[:date] = @decipher.date
     @deciphered_message
   end
 
