@@ -6,6 +6,7 @@ require './lib/keys_generator'
 require './lib/offsets'
 require './lib/cipher'
 require './lib/decipher'
+require 'simplecov'
 require 'pry'
 
 class EnigmaTest < MiniTest::Test
@@ -13,11 +14,9 @@ class EnigmaTest < MiniTest::Test
   def setup
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
-    # @offsets.date_convert
     @cipher = Cipher.new(@keysets, @offsets)
     @decipher = Decipher.new(@keysets, @offsets)
     @enigma = Enigma.new(@cipher, @decipher)
-    # @enigma.encrypt("hello world end", "08304", "291018")
   end
 
   def test_enigma_exists
@@ -61,6 +60,25 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected, @enigma.decrypt(@enigma.encrypted_message[:encryption], "02715")
   end
 
+  def test_enigma_encrypt_no_key_no_date
 
+    expected = {:encryption=>"ndbsu mvxkt",
+      :key=>"02715",
+      :date=>"160419"
+    }
+    assert_equal expected, @enigma.encrypt("hello world")
+  end
+
+  def test_enigma_decrypt_no_key_no_date
+
+    @enigma.encrypt("hello world")
+    expected = {
+      :decryption=>"hello world",
+      :key=>@cipher.key,
+      :date=>@offsets.date
+    }
+    # binding.pry
+    assert_equal expected, @enigma.decrypt(@enigma.encrypted_message[:encryption], @enigma.cipher.key, @enigma.cipher.date)
+  end
 
 end

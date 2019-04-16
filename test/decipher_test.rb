@@ -6,6 +6,7 @@ require './lib/keys_generator'
 require './lib/offsets'
 require './lib/cipher'
 require './lib/decipher'
+require 'simplecov'
 require 'pry'
 
 class DecipherTest < MiniTest::Test

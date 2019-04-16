@@ -23,3 +23,5 @@ end
 
 output = File.open(ARGV[1], 'w')
 output.write(encrypt)
+
+puts "key: #{enigma.cipher.key} & date: #{enigma.cipher.date}"

@@ -3,6 +3,7 @@ require 'minitest/pride'
 require 'date'
 require './lib/enigma'
 require './lib/keys_generator'
+require 'simplecov'
 require 'pry'
 
 class KeyGeneratorTest < MiniTest::Test

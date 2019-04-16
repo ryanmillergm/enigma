@@ -4,6 +4,7 @@ require 'date'
 require './lib/enigma'
 require './lib/keys_generator'
 require './lib/offsets'
+require 'simplecov'
 require 'pry'
 
 class OffsetsTest < MiniTest::Test

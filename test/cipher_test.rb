@@ -5,6 +5,7 @@ require './lib/enigma'
 require './lib/keys_generator'
 require './lib/offsets'
 require './lib/cipher'
+require 'simplecov'
 require 'pry'
 
 class CipherTest < MiniTest::Test
