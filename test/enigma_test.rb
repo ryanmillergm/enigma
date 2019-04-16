@@ -44,23 +44,23 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_encrypt_with_no_date
-    expected = {:encryption=>"ojhav sdyqz",
+    expected = {:encryption=>"ndbsu mvxkt",
       :key=>"02715",
-      :date=>"150419"
+      :date=>"160419"
     }
     assert_equal expected, encrypted = @enigma.encrypt("hello world", "02715")
   end
 
   def test_enigma_decrypt_with_no_date
-    @enigma.encrypt("HELLo World", "02715")
+    @enigma.encrypt("HELLo wOrld", "02715")
 
-    expected = {:encryption=>"ndbsu mvxkt",
+    expected = {:decryption=>"hello world",
       :key=>"02715",
-      :date=>"150419"
+      :date=>"160419"
     }
-# binding.pry
     assert_equal expected, @enigma.decrypt(@enigma.encrypted_message[:encryption], "02715")
   end
+
 
 
 end

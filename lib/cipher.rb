@@ -26,10 +26,10 @@ class Cipher
   def encrypt(message, key, date)
     make_keys(key, date)
     count = 0
-    message.each_char do |letter|
+    message.downcase.each_char do |letter|
       count = 0 if count > 39
       count += 1
-      unless letter.downcase.ord.between?("a".ord, "z".ord)
+      unless letter.ord.between?("a".ord, "z".ord)
         @ciphered_code << letter
         next
       end
