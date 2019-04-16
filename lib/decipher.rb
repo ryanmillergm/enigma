@@ -32,7 +32,7 @@ class Decipher
         @deciphered_code << letter
         next
       end
-    letter_code = ((((letter.ord - "a".ord) - @shift[count % 4 - 1]) % 27) + "a".ord)
+    letter_code = ((((letter.ord - "a".ord) - @shift[count % 4]) % 26) + "a".ord)
     @deciphered_code << letter_code.chr
     end
     @deciphered_code

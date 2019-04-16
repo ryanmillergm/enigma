@@ -27,13 +27,16 @@ class Cipher
     make_keys(key, date)
     count = 0
     message.each_char do |letter|
+      count = 0 if count > 39
       count += 1
-      unless letter.ord.between?("a".ord, "z".ord)
+      unless letter.downcase.ord.between?("a".ord, "z".ord)
         @ciphered_code << letter
         next
       end
-      # binding.pry
-    letter_code = ((((letter.ord - "a".ord) + @shift[count % 4 - 1]) % 27) + "a".ord)
+    letter_code = ((((letter.ord - "a".ord) + @shift[count % 4]) % 26) + "a".ord)
+    if letter_code > 122
+      letter_code = letter_code - 1
+    end
     @ciphered_code << letter_code.chr
     end
     @ciphered_code
@@ -46,7 +49,5 @@ class Cipher
     @key = key
     @date = date
   end
-
-
 
 end

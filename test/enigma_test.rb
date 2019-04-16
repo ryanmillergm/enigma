@@ -26,7 +26,7 @@ class EnigmaTest < MiniTest::Test
 
   def test_enigma_encrypt
     expected = {
-      encryption: "keder ohulw",
+      encryption: "izfop qrsgx",
       key: "02715",
       date: "040895"
     }
@@ -40,15 +40,27 @@ class EnigmaTest < MiniTest::Test
       key: "02715",
       date: "040895"
     }
-   assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+   assert_equal expected, @enigma.decrypt("izfop qrsgx", "02715", "040895")
   end
 
-  def test_enigma_
-    expected = {:encryption=>"ojhav sdyq{",
+  def test_enigma_encrypt_with_no_date
+    expected = {:encryption=>"ojhav sdyqz",
       :key=>"02715",
       :date=>"150419"
     }
     assert_equal expected, encrypted = @enigma.encrypt("hello world", "02715")
   end
+
+  def test_enigma_decrypt_with_no_date
+    @enigma.encrypt("HELLo World", "02715")
+
+    expected = {:encryption=>"ndbsu mvxkt",
+      :key=>"02715",
+      :date=>"150419"
+    }
+# binding.pry
+    assert_equal expected, @enigma.decrypt(@enigma.encrypted_message[:encryption], "02715")
+  end
+
 
 end
