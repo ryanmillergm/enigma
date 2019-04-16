@@ -17,17 +17,12 @@ class OffsetsTest < MiniTest::Test
     assert_instance_of Offsets, @offsets
   end
 
-  def test_offsets_converts_date_to_DDMMYY
-    assert_equal 6, @offsets.date_convert.length
-  end
-
   def test_date_converted_squared
-    expected = @offsets.date_convert.to_i ** 2
+    expected = @offsets.date.to_i ** 2
     assert_equal expected, @offsets.date_converted_squared
   end
 
   def test_offset_key_created
-    skip
     assert_equal 4, @offsets.offset_keys_generator.count
   end
 
