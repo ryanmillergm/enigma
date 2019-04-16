@@ -13,7 +13,7 @@ class EnigmaTest < MiniTest::Test
   def setup
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
-    @offsets.date_convert
+    # @offsets.date_convert
     @cipher = Cipher.new(@keysets, @offsets)
     @decipher = Decipher.new(@keysets, @offsets)
     @enigma = Enigma.new(@cipher, @decipher)
@@ -41,6 +41,14 @@ class EnigmaTest < MiniTest::Test
       date: "040895"
     }
    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
+  def test_enigma_
+    expected = {:encryption=>"ojhav sdyq{",
+      :key=>"02715",
+      :date=>"150419"
+    }
+    assert_equal expected, encrypted = @enigma.encrypt("hello world", "02715")
   end
 
 end
