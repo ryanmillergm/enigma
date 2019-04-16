@@ -23,7 +23,7 @@ class Decipher
     @shift
   end
 
-  def decrypt(ciphertext, key, date)
+  def decrypt(ciphertext, key = @keysets.set_key_values.values.join[-4..-1], date = @offsets.date)
     make_keys(key, date)
     count = 0
     ciphertext.each_char do |letter|
