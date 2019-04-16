@@ -23,8 +23,9 @@ class Cipher
     @shift
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key = @keysets.set_key_values.values.join[-4..-1], date = @offsets.date)
     make_keys(key, date)
+    set_shift
     count = 0
     message.downcase.each_char do |letter|
       count = 0 if count > 39
@@ -45,9 +46,10 @@ class Cipher
   def make_keys(key, date)
     @keysets.set_key_values(key)
     @offsets.offset_keys_generator(date)
-    set_shift
     @key = key
     @date = date
+    set_shift
+    @keysets.keys
   end
 
 end
