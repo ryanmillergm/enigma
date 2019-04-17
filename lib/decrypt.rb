@@ -14,11 +14,11 @@ cipher =Cipher.new(keysets, offsets)
 decipher = Decipher.new(keysets, offsets)
 enigma = Enigma.new(cipher, decipher)
 
-message = File.open(ARGV[0], 'r')
+message = File.open("./lib/#{ARGV[0]}", 'r')
 decrypt = ''
 message.each do |line|
   decrypt += enigma.decrypt(line.chop, ARGV[2], ARGV[3])[:decryption] + "\n"
 end
 
-output = File.open(ARGV[1], 'w')
+output = File.open("./lib/##{ARGV[1]}", 'w')
 output.write(decrypt)
