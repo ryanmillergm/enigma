@@ -20,5 +20,7 @@ message.each do |line|
   decrypt += enigma.decrypt(line.chop, ARGV[2], ARGV[3])[:decryption] + "\n"
 end
 
-output = File.open("./lib/##{ARGV[1]}", 'w')
+output = File.open("./lib/#{ARGV[1]}", 'w')
 output.write(decrypt)
+
+puts "Created '#{ARGV[1]}' with the key: #{ARGV[2]} and date: #{ARGV[3]}"
