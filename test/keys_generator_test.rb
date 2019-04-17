@@ -1,9 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'date'
-require './lib/enigma'
-require './lib/keys_generator'
-require 'pry'
+require './test/test_helper'
 
 class KeyGeneratorTest < MiniTest::Test
 
