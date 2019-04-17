@@ -21,8 +21,5 @@ class DecipherTest < MiniTest::Test
     expected = "this is a secret message"
     assert_equal expected, @decipher.decrypt("ynrb ob f bnhxnc snbxgpn", "08304", "040895")
   end
-  # 
-  # def test_d
-  #
-  # end
+
 end

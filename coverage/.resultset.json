@@ -109,16 +109,16 @@
         1,
         1,
         1,
-        11,
-        11,
-        11,
-        1,
-        1,
+        20,
+        20,
+        20,
+        4,
+        4,
         null,
-        10,
-        10,
+        16,
+        16,
         null,
-        10,
+        16,
         null,
         1,
         null,
@@ -186,7 +186,7 @@
         null
       ]
     },
-    "timestamp": 1555512374
+    "timestamp": 1555513633
   },
   "Unit Tests": {
     "coverage": {
@@ -399,9 +399,6 @@
         1,
         null,
         null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/ryan/turing/mod1/projects/enigma/test/enigma_test.rb": [
@@ -463,11 +460,10 @@
         null,
         null,
         1,
-        null,
         1,
         null,
-        1,
         null,
+        1,
         null,
         null,
         null,
@@ -524,6 +520,6 @@
         null
       ]
     },
-    "timestamp": 1555460093
+    "timestamp": 1555514381
   }
 }

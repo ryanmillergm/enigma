@@ -6,11 +6,6 @@ class CipherTest < MiniTest::Test
     @keysets = KeyGenerator.new
     @offsets = Offsets.new
     @cipher = Cipher.new(@keysets, @offsets)
-
-    # @keysets.set_key_values
-    # @offsets.offset_keys_generator
-    # @keysets.random_number_generator
-    # @cipher.set_shift
   end
 
   def test_cipher_exists
