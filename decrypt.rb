@@ -17,7 +17,6 @@ enigma = Enigma.new(cipher, decipher)
 message = File.open(ARGV[0], 'r')
 decrypt = ''
 message.each do |line|
-  # binding.pry
   decrypt += enigma.decrypt(line.chop, ARGV[2], ARGV[3])[:decryption] + "\n"
 end
 

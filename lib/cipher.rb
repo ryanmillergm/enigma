@@ -43,7 +43,6 @@ class Cipher
   end
 
   def make_keys(key, date)
-    # binding.pry
     @keysets.set_key_values(key)
     @offsets.offset_keys_generator(date)
     @key = key

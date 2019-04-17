@@ -15,6 +15,14 @@ class Decipher
     @shift = nil
   end
 
+  def make_keys(key, date)
+    @keysets.set_key_values(key)
+    @offsets.offset_keys_generator(date)
+    set_shift
+    @key = key
+    @date = date
+  end
+
   def set_shift
     @shift = []
     @keysets.keys.values.length.times do |value|
@@ -38,11 +46,4 @@ class Decipher
     @deciphered_code
   end
 
-  def make_keys(key, date)
-    @keysets.set_key_values(key)
-    @offsets.offset_keys_generator(date)
-    set_shift
-    @key = key
-    @date = date
-  end
 end
