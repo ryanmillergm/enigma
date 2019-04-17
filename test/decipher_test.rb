@@ -1,13 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'date'
-require './lib/enigma'
-require './lib/keys_generator'
-require './lib/offsets'
-require './lib/cipher'
-require './lib/decipher'
-require 'simplecov'
-require 'pry'
+require './test/test_helper'
 
 class DecipherTest < MiniTest::Test
 
@@ -30,4 +21,8 @@ class DecipherTest < MiniTest::Test
     expected = "this is a secret message"
     assert_equal expected, @decipher.decrypt("ynrb ob f bnhxnc snbxgpn", "08304", "040895")
   end
+  # 
+  # def test_d
+  #
+  # end
 end

@@ -1,11 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'date'
-require './lib/enigma'
-require './lib/keys_generator'
-require './lib/offsets'
-require 'simplecov'
-require 'pry'
+require './test/test_helper'
 
 class OffsetsTest < MiniTest::Test
 

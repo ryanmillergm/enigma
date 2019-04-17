@@ -1,13 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'date'
-require './lib/enigma'
-require './lib/keys_generator'
-require './lib/offsets'
-require './lib/cipher'
-require './lib/decipher'
-require 'simplecov'
-require 'pry'
+require './test/test_helper'
 
 class EnigmaTest < MiniTest::Test
 
@@ -61,12 +52,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_encrypt_no_key_no_date
-
-    expected = {:encryption=>"ndbsu mvxkt",
-      :key=>"02715",
-      :date=>"160419"
-    }
-    assert_equal expected, @enigma.encrypt("hello world")
+    assert_equal 3, @enigma.encrypt("hello world").count
   end
 
   def test_enigma_decrypt_no_key_no_date

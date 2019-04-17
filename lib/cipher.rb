@@ -36,7 +36,6 @@ class Cipher
       end
     letter_code = ((((letter.ord - "a".ord) + @shift[count % 4]) % 26) + "a".ord)
     if letter_code > 122
-      letter_code = letter_code - 1
     end
     @ciphered_code << letter_code.chr
     end
