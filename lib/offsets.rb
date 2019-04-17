@@ -8,7 +8,7 @@ class Offsets
   end
 
   def date_converted_squared(date = @date)
-    date.to_i * date.to_i
+    date.to_i ** 2
   end
 
   def offset_keys_generator(date = @date)
